@@ -1,0 +1,26 @@
+dd_module.py
+
+import random
+import datetime
+
+class DDBook:
+    def __init__(self, title, author, year):
+        self.title = title
+        self.author = author
+        self.year = year
+        self.added = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    def info(self):
+        return f"{self.title} ({self.year}) - {self.author} | Added: {self.added}"
+
+
+def dd_format_text(text):
+    return f"[DD-FORMAT] {text.strip()}"
+
+
+def demo_random_functions():
+    values = list(range(1, 11))
+    r1 = random.randint(1, 100)
+    r2 = random.choice(values)
+    random.shuffle(values)
+    return r1, r2, values
