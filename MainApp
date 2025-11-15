@@ -1,0 +1,78 @@
+main.py
+import tkinter as tk
+from tkinter import messagebox
+from dd_module import DDBook, dd_format_text, demo_random_functions
+
+books = []
+
+
+def add_book():
+    title = entry_title.get()
+    author = entry_author.get()
+    year = entry_year.get()
+    if not title or not author or not year:
+        return
+    book = DDBook(title, author, year)
+    books.append(book)
+    listbox.insert(tk.END, book.title)
+    entry_title.delete(0, tk.END)
+    entry_author.delete(0, tk.END)
+    entry_year.delete(0, tk.END)
+
+
+def show_details():
+    selected = listbox.curselection()
+    if not selected:
+        return
+    index = selected[0]
+    book = books[index]
+    window = tk.Toplevel(root)
+    window.title("Book Details")
+    label = tk.Label(window, text=dd_format_text(book.info()))
+    label.pack(padx=20, pady=20)
+
+
+def delete_book():
+    selected = listbox.curselection()
+    if not selected:
+        return
+    index = selected[0]
+    listbox.delete(index)
+    books.pop(index)
+
+
+root = tk.Tk()
+root.title("DD Book Manager")
+root.geometry("400x400")
+
+frame = tk.Frame(root)
+frame.pack(pady=10)
+
+label_title = tk.Label(frame, text="Title")
+label_title.grid(row=0, column=0)
+entry_title = tk.Entry(frame)
+entry_title.grid(row=0, column=1)
+
+label_author = tk.Label(frame, text="Author")
+label_author.grid(row=1, column=0)
+entry_author = tk.Entry(frame)
+entry_author.grid(row=1, column=1)
+
+label_year = tk.Label(frame, text="Year")
+label_year.grid(row=2, column=0)
+entry_year = tk.Entry(frame)
+entry_year.grid(row=2, column=1)
+
+btn_add = tk.Button(root, text="Add Book", command=add_book)
+btn_add.pack(pady=5)
+
+listbox = tk.Listbox(root)
+listbox.pack(pady=10, fill=tk.BOTH, expand=True)
+
+btn_details = tk.Button(root, text="Show Details", command=show_details)
+btn_details.pack(pady=5)
+
+btn_delete = tk.Button(root, text="Delete Book", command=delete_book)
+btn_delete.pack(pady=5)
+
+root.mainloop()
