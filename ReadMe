@@ -1,0 +1,66 @@
+DD Könyvkezelő Alkalmazás
+
+Hallgató
+
+*<DénesDalma>*
+
+Feladat leírása
+
+A program egy egyszerű könyvkezelő alkalmazás, amely lehetővé teszi könyvek felvételét, listázását, törlését és részleteik megtekintését. A grafikus felület tkinter alapon készült. A program tartalmaz saját modult, saját osztályt és saját függvényt, mindegyik a hallgató monogramját (DD) használja. Eseménykezelések valósítják meg a gombok és listabox műveleteit.
+
+Modulok és függvények
+
+Tanult modul
+
+* **date time** – a könyv felvételének dátumát tárolja
+
+Bemutatandó modul
+
+* **random** – három függvény bemutatása:
+
+  * randint()
+  * choice()
+  * shuffle()
+
+Saját modul: **dd_module.py**
+
+* **DDBook osztály**
+
+  * Könyv adatait és rögzítés idejét tárolja
+* **dd_format_text() függvény**
+
+  * Megjelenítéshez formázza a szöveget
+* **demo_random_functions() függvény**
+
+  * A random modul három függvényét demózza
+
+Osztályok
+
+DDBook
+
+* title
+* author
+* year
+* added (dátum és idő)
+* info() – a könyv adatait adja vissza
+
+Program felépítése
+
+Indítás
+
+`main.py`
+
+Alapablak
+
+`root` – tkinter főablak
+
+Programnév
+
+`DD Book Manager`
+
+Fő funkciók
+
+* Könyv felvétele
+* Könyv megjelenítése
+* Könyv törlése
+* Részletek megjelenítése külön ablakban
